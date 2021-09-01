@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description"
+        content="Venez jouer à la version web du Pierre, feuille, ciseaux de Sheldon Cooper, essayez de battre l'ordinateur et remportez la fierté d'avoir vaincu un code bricolé en quelques jours !">
     <title>Pierre, Feuilles, Ciseaux</title>
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        <div class="row" id="playzone">
+            <div class="col-lg-6 col-md-6 col-sm-12 order-2" id="enemy">
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 order-1" id="ally">
+                <button id="stone">Pierre</button>
+                <button id="leaf">Feuille</button>
+                <button id="scissors">Ciseaux</button>
+                <button id="spock">Spock</button>
+                <button id="lizard">Lézard</button>
+
+            </div>
+        </div>
+        <div id="score">
+            <p><span id="myscore">0</span> - <span id="compscore">0</span></p>
+        </div>
+
+        <div id="reinitialize" class=" row justify-content-center">
+            <button id="init">Réinitialiser</button>
+
+        </div>
+    </div>
+
+<script src="js/script.js"></script>
 </body>
+
 </html>
