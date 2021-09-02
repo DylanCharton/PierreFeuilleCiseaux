@@ -14,22 +14,39 @@
 </head>
 
 <body>
+    <header class="container-fluid">
+        <div class="row justify-content-center text-center">
+            <div class="col-4">
+                <span id="number-wins" class="games-score px-3 py-0">0</span>
+            </div>
+            <div class="col-4 ">
+                <img src="images/logo.png" alt="Logo" class="img-fluid" id="logo">
+            </div>
+            <div class="col-4">
+                <span id="number-lost" class="games-score px-3">0</span>
+            </div>
+
+        </div>
+
+    </header>
     <div class="container-fluid">
         <div class="row" id="playzone">
             <div class="col-lg-6 col-md-6 col-sm-12 order-2" id="enemy">
 
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 order-1" id="ally">
-                <button id="stone">Pierre</button>
-                <button id="leaf">Feuille</button>
-                <button id="scissors">Ciseaux</button>
-                <button id="spock">Spock</button>
-                <button id="lizard">Lézard</button>
+                <button class="my-hand" id="stone">Pierre</button>
+                <button class="my-hand" id="leaf">Feuille</button>
+                <button class="my-hand" id="scissors">Ciseaux</button>
+                <button class="my-hand" id="spock">Spock</button>
+                <button class="my-hand" id="lizard">Lézard</button>
 
             </div>
         </div>
+        
+        <div id="state"></div>
         <div id="score">
-            <p><span id="myscore">0</span> - <span id="compscore">0</span></p>
+            <span id="myscore">0</span> - <span id="compscore">0</span>
         </div>
 
         <div id="reinitialize" class=" row justify-content-center">

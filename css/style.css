@@ -3,3 +3,24 @@
 div{
     border: red solid 1px;
 }
+body {
+    background-image: url(../images/BG.png);
+    background-size:auto;
+    background-repeat: no-repeat;
+    
+}
+header{
+    background-image: url(../images/herobg.jpg);
+    background-size: cover;
+    z-index: 10;
+    height : 11vw;
+}
+
+.games-score{
+    background-color: #e5e7ff;
+    font-size: 5vw;
+    border-radius: 15px;
+}
+#logo{
+    height:80%;
+}
