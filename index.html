@@ -15,14 +15,17 @@
 
 <body>
     <header class="container-fluid">
-        <div class="row justify-content-center text-center">
+        <div class="row justify-content-center text-center" id="banner">
+
             <div class="col-4">
+                <p>Parties gagnées :</p>
                 <span id="number-wins" class="games-score px-3 py-0">0</span>
             </div>
             <div class="col-4 ">
                 <img src="images/logo.png" alt="Logo" class="img-fluid" id="logo">
             </div>
             <div class="col-4">
+                <p>Parties perdues :</p>
                 <span id="number-lost" class="games-score px-3">0</span>
             </div>
 
@@ -30,32 +33,46 @@
 
     </header>
     <div class="container-fluid">
-        <div class="row" id="playzone">
-            <div class="col-lg-6 col-md-6 col-sm-12 order-2" id="enemy">
+        <div class="row justify-content-center" id="playzone">
+            <div id="state" class="text-center">Choisissez une carte</div>
+            <div id="score" class="text-center">
+                <span id="myscore">0</span> - <span id="compscore">0</span>
+            </div>
+            <div class="compare row text-center" id="compare-cards">
+                <div class="col-6" id="my-choice">
+
+                </div>
+                <div class="col-6" id="comp-choice">
+
+                </div>
 
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 order-1" id="ally">
-                <button class="my-hand" id="stone">Pierre</button>
-                <button class="my-hand" id="leaf">Feuille</button>
-                <button class="my-hand" id="scissors">Ciseaux</button>
-                <button class="my-hand" id="spock">Spock</button>
-                <button class="my-hand" id="lizard">Lézard</button>
+            <div class="col-lg-6 col-md-6 col-sm-12 order-2 text-center" id="enemy">
+                <img src="images/lizardcardcomp.png" alt="Carté Lézard" class="cards-size">
+                <img src="images/spockcardcomp.png" alt="Carté Lézard" class="cards-size">
+                <img src="images/papercardcomp.png" alt="Carté Lézard" class="cards-size">
+                <img src="images/scissorscardcomp.png" alt="Carté Lézard" class="cards-size">
+                <img src="images/rockcardcomp.png" alt="Carté Lézard" class="cards-size">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 order-1 text-center" id="ally">
+
+                <img src="images/rockcardplayer.png" alt="Carte Pierre" id="stone" class="cards-size">
+                <img src="images/scissorscardplayer.png" alt="Carte Ciseaux" id="scissors" class="cards-size">
+                <img src="images/papercardplayer.png" alt="Carte Papier" id="leaf" class="cards-size">
+                <img src="images/spockcardplayer.png" alt="Carte Spock" id="spock" class="cards-size">
+                <img src="images/lizardcardplayer.png" alt="Carte Lézard" id="lizard" class="cards-size">
+
 
             </div>
-        </div>
-        
-        <div id="state"></div>
-        <div id="score">
-            <span id="myscore">0</span> - <span id="compscore">0</span>
         </div>
 
         <div id="reinitialize" class=" row justify-content-center">
-            <button id="init">Réinitialiser</button>
+            <img src="images/reinitbtn.svg" alt="Bouton de réinitialisation" id="init">
 
         </div>
     </div>
 
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

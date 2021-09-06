@@ -1,17 +1,18 @@
 /* CLASSES TO HELP ME */
 
-div{
+/* div{
     border: red solid 1px;
-}
+} */
 body {
     background-image: url(../images/BG.png);
     background-size:auto;
     background-repeat: no-repeat;
+    scroll-behavior: smooth;
     
 }
 header{
-    background-image: url(../images/herobg.jpg);
-    background-size: cover;
+    background-image: url(../images/herobg2.png);
+    background-size:cover;
     z-index: 10;
     height : 11vw;
 }
@@ -22,5 +23,71 @@ header{
     border-radius: 15px;
 }
 #logo{
-    height:80%;
+    height:8vw;
+    padding-top : 1.5vw;
+}
+
+#banner {
+    height: 100%;
+}
+header p {
+    color : #e5e7ff;
+}
+.cards-size{
+    height: 11vw;
+    cursor:pointer;
+}
+#compare-cards img{
+    height : 15vw;
+}
+
+#init{
+    height: 3.5vw;
+    width : 5vw;
+    cursor: pointer;
+    transition: 1s;
+}
+#init:hover{
+    transform: rotate(180deg);
+    transition: 1s;
+}
+#init:active{
+    transform: rotate(720deg);
+    transition : 0.8s;
+}
+#compare-cards{
+    height: 20vw;
+}
+#state {
+    color : #e5e7ff;
+    font-size : 2vw;
+}
+
+#score{
+    font-size : 2vw;
+    background-color: #e5e7ff;
+    border-radius: 15px;
+    width : 8vw;
+    color : #383838;
+    border : 1px solid #383838;
+    box-shadow: 0 3px 5px #383838;
+}
+#compare-cards{
+    position:relative;
+}
+.slide {
+    position : absolute;
+    animation-name: slide;
+    animation-duration: 0.5s;
+    transition : 0.5s;
+    
+}
+
+@keyframes slide {
+    from {
+        bottom : 0px
+    }
+    to {
+        top : 0px;
+    }
 }
