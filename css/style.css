@@ -1,117 +1,217 @@
 @font-face {
     font-family: 'acmeregular';
     src: url('../fonts/acme-regular-webfont.woff2') format('woff2'),
-         url('../fonts/acme-regular-webfont.woff') format('woff');
+        url('../fonts/acme-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
+
 /* CLASSES TO HELP ME */
 
-/* div{
-    border: red solid 1px;
-} */
-body {
-    background-image: url(../images/BG.png);
-    background-size:auto;
-    background-repeat: no-repeat;
-    scroll-behavior: smooth;
-    overflow : hidden;
-    font-family: 'acmeregular' ;
-    
-    
+div {
+    border: red dotted 1px;
 }
-header{
-    background-image: url(../images/herobg2.png);
-    background-size:cover;
+
+body {
+    background: url(../images/BG.png) fixed center no-repeat;
+    background-size: cover;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    font-family: 'acmeregular';
+}
+
+header {
+    background: url(../images/herobg2.png) fixed center no-repeat;
+    background-size: cover;
     z-index: 10;
-    height : 10vw;
-    width:100vw;
+    height: 10vw;
+    width: 100vw;
     box-shadow: 0px 5px 10px #00000073;
 }
 
-.games-score{
+#win-screen{
+    background-color: #383838;
+    color : #e5e7ff;
+    width: 100%;
+    position : absolute;
+    top: 20vw;
+    display:none;
+}
+
+#lose-screen{
+    background-color: #383838;
+    color : #e5e7ff;
+    width: 100%;
+    position : absolute;
+    top: 20vw;
+    display:none;
+}
+
+.games-score {
     background-color: #e5e7ff;
     font-size: 5vw;
     border-radius: 1.5vw;
 }
-#logo{
-    height:8vw;
-    padding-top : 1.5vw;
+
+#logo {
+    height: 8vw;
+    padding-top: 1.5vw;
 }
 
 #banner {
     height: 100%;
     font-size: 1.4vw;
 }
+
 header p {
-    color : #e5e7ff;
-}
-.cards-size{
-    height: 11vw;
-    cursor:pointer;
-}
-#compare-cards img{
-    height : 15vw;
+    color: #e5e7ff;
 }
 
-#init{
-    height: 3.5vw;
-    width : 5vw;
+.cards-size {
+    height: 11vw;
+    cursor: pointer;
+}
+
+#compare-cards img {
+    height: 15vw;
+}
+
+#init {
+    height: 5vw;
+    width: 5vw;
     cursor: pointer;
     transition: 1s;
-    
+
 }
-#init:hover{
+
+#init:hover {
     transform: rotate(180deg);
     transition: 1s;
 }
-#init:active{
+
+#init:active {
     transform: rotate(720deg);
-    transition : 0.8s;
-}
-#compare-cards{
-    height: 16vw;
-}
-#state {
-    color : #e5e7ff;
-    font-size : 2vw;
+    transition: 0.8s;
 }
 
-#score{
-    font-size : 2vw;
+#compare-cards {
+    height: 16vw;
+}
+
+#state {
+    color: #e5e7ff;
+    font-size: 2vw;
+    height: fit-content;
+}
+
+#score {
+    font-size: 2vw;
     background-color: #e5e7ff;
     border-radius: 1vw;
-    width : 8vw;
-    color : #383838;
-    border : 1px solid #383838;
+    width: 8vw;
+    color: #383838;
+    border: 1px solid #383838;
     box-shadow: 0 3px 5px #383838;
+    height: fit-content;
 }
-#my-choice{
-    position:relative;
+
+#my-choice {
+    position: relative;
 }
-#comp-choice{
-    position:relative;
+
+#comp-choice {
+    position: relative;
 }
 
 .slide {
-    position : absolute;
+    position: absolute;
     left: 18vw;
     animation-name: slide;
-    animation-duration: 0.3s;
-    
+    animation-duration: 2s;
+
 
 }
 
 @keyframes slide {
-    0% {top : 1300px;}
-    100% {top : 0px;}
+    0% {
+        top: 1300px;
+    }
+
+    20% {
+        top: 0px;
+    }
+
+    80% {
+        top: 0px;
+    }
+
+    100% {
+        top: 1300px
+    }
 }
 
-@media screen and (max-width : 1024px){
-
+@media screen and (max-width : 1024px) {
+    header{
+        height : calc(10vw + 60px);
+    }
+    .games-score{
+        font-size: calc(5vw + 30px);
+    }
+    #logo{
+        height : calc(10vw + 30px);
+    }
+    .games-won{
+        font-size: calc(2vw + 5px);
+    }
+    #compare-cards{
+        height: 40vw;
+    }
+    #score{
+        font-size : calc(5vw + 15px);
+        width: fit-content;
+    }
+    #state{
+        font-size : calc(2vw + 10px);
+        padding-top: 2vw;
+    }
+    #compare-cards img {
+        height: 30vw;
+    }
+    .cards-size{
+        height: 13vw;
+    }
+    #init{
+        height: calc(5vw + 30px);
+        width: calc(5vw + 30px);
+    }
+    .slide{
+        left : 12vw;
+    }
+    #lose-screen{
+        top : 40vw;
+    }
+    #win-screen{
+        top : 40vw;
+    }
 }
 
 @media screen and (max-width : 767px) {
-
+    #enemy{
+        display:none;
+    }
+    #compare-cards{
+        height: 50vw;
+    }
+    #compare-cards img {
+        height: 45vw;
+        position:absolute;
+        
+    }
+    .cards-size{
+        height: 26vw;
+    }
+    .slide{
+        left : 10vw;
+    }
 }

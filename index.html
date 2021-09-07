@@ -9,7 +9,7 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <meta name="description"
-        content="Venez jouer à la version web du Pierre, feuille, ciseaux de Sheldon Cooper, essayez de battre l'ordinateur et remportez la fierté d'avoir vaincu un code bricolé en quelques jours !">
+        content="Venez jouer à la version web du pierre, feuille, ciseaux de Sheldon Cooper, essayez de battre l'ordinateur et remportez la fierté d'avoir vaincu un code bricolé en quelques jours !">
     <title>Pierre, Feuilles, Ciseaux</title>
 </head>
 
@@ -18,13 +18,13 @@
         <div class="row justify-content-center text-center" id="banner">
 
             <div class="col-4">
-                <p class="m-0">Parties gagnées :</p>
+                <p class="m-0 games-won">Parties gagnées :</p>
                 <span id="number-wins" class="games-score px-3 py-0">0</span>
             </div>
             <div class="col-4 ">
                 <img src="images/logo.png" alt="Logo" class="img-fluid" id="logo">
             </div>
-            <div class="col-4">
+            <div class="col-4 games-won">
                 <p class="m-0">Parties perdues :</p>
                 <span id="number-lost" class="games-score px-3">0</span>
             </div>
@@ -33,7 +33,7 @@
 
     </header>
     <div class="container-fluid">
-        <div class="row justify-content-center" id="playzone">
+        <div class="row d-flex justify-content-center" id="playzone">
             <div id="score" class="text-center mt-2">
                 <span id="myscore">0</span> - <span id="compscore">0</span>
             </div>
@@ -71,6 +71,24 @@
 
         </div>
     </div>
+    <div class="jumbotron text-center" id="win-screen">
+        <h2 class="display-4">Vous avez gagné !</h2>
+        <p class="lead">C'est un simple jeu de hasard, alors de là à parler de mérite... Bravo quand même !</p>
+        <hr class="my-4">
+        <p>Si vous souhaitez rejouer, cliquez sur le bouton ci-dessous.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button" id="try-again-btn">Rejouer</a>
+        </p>
+      </div>
+    <div class="jumbotron text-center" id="lose-screen">
+        <h2 class="display-4">Vous avez perdu !</h2>
+        <p class="lead">C'est un simple jeu de hasard, pas de chance...</p>
+        <hr class="my-4">
+        <p>Si vous souhaitez rejouer, cliquez sur le bouton ci-dessous.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button" id="try-again-btn2">Rejouer</a>
+        </p>
+      </div>
 
     <script src="js/script.js"></script>
 </body>

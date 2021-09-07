@@ -1,4 +1,3 @@
-
 // Creating an array with the play choices
 const shifumi = ["Pierre", "Feuille", "Ciseaux", "Spock", "Lézard"];
 // Initializing my buttons in variables
@@ -18,10 +17,10 @@ let myScore = 0;
 let compScore = 0;
 let numberWins = document.getElementById("number-wins");
 let numberLost = document.getElementById("number-lost");
-let myWins = JSON.parse(window.localStorage.getItem("monScore"))|| 0;
-let yourWins = JSON.parse(window.localStorage.getItem("tonScore"))|| 0;
-numberWins.innerHTML = JSON.parse(window.localStorage.getItem("monScore"))|| 0;
-numberLost.innerHTML = JSON.parse(window.localStorage.getItem("tonScore"))|| 0;
+let myWins = JSON.parse(window.localStorage.getItem("monScore")) || 0;
+let yourWins = JSON.parse(window.localStorage.getItem("tonScore")) || 0;
+numberWins.innerHTML = JSON.parse(window.localStorage.getItem("monScore")) || 0;
+numberLost.innerHTML = JSON.parse(window.localStorage.getItem("tonScore")) || 0;
 
 let myRock = document.createElement("img");
 myRock.src = "images/rockcardplayer.png";
@@ -55,188 +54,205 @@ let yourLizard = document.createElement("img");
 yourLizard.src = "images/lizardcardcomp.png";
 yourLizard.className = "slide";
 
-function removeCards(){
+function removeCards() {
+    myChoice.style.display = "block";
+    compChoice.style.display = "block";
     if (compChoice.hasChildNodes() || myChoice.hasChildNodes()) {
         compChoice.removeChild(compChoice.firstChild);
-        myChoice.removeChild(myChoice.firstChild);
+        myChoice.removeChild(myChoice.firstChild);    
+        setTimeout(function(){
+            myChoice.style.display = "none";
+            compChoice.style.display = "none";
+        }, 1800)
     }
+    
 }
-function reinit(){
+function reinit() {
+
     myScore = 0;
     compScore = 0;
     myCounter.innerHTML = 0;
     compCounter.innerHTML = 0;
     comment.innerHTML = "Choisissez une carte."
-    removeCards()
+    
 }
-document.getElementById("init").addEventListener("click", function() {
+
+function roundLose() {
+    compScore++
+    compCounter.innerHTML = compScore;
+    comment.innerHTML = "Perdu !";
+}
+
+function roundWin() {
+    myScore++;
+    myCounter.innerHTML = myScore;
+    comment.innerHTML = "Gagné !";
+}
+
+function result() {
+        if (myScore == 3) {
+            document.getElementById("win-screen").style.display = "block";
+            myWins++;
+        } else if (compScore == 3) {
+            document.getElementById("lose-screen").style.display = "block"
+            yourWins++
+        }
+    window.localStorage.setItem("monScore", JSON.stringify(myWins));
+    window.localStorage.setItem("tonScore", JSON.stringify(yourWins));
+    numberWins.innerHTML = JSON.parse(window.localStorage.getItem("monScore"));
+    numberLost.innerHTML = JSON.parse(window.localStorage.getItem("tonScore"));
+}
+console.log(numberWins.innerHTML)
+document.getElementById("init").addEventListener("click", function () {
     reinit()
+    if (numberWins.innerHTML > 0 || numberLost.innerHTML > 0){
+        localStorage.clear()
+        numberWins.innerHTML = JSON.parse(window.localStorage.getItem("monScore")) || 0;
+        numberLost.innerHTML = JSON.parse(window.localStorage.getItem("tonScore")) || 0;
+        myWins = 0;
+        yourWins = 0;
+        
+    }
+});
+document.getElementById("try-again-btn").addEventListener("click", function () {
+    reinit()
+    document.getElementById("win-screen").style.display = "none";
+});
+document.getElementById("try-again-btn2").addEventListener("click", function () {
+    reinit()
+    document.getElementById("lose-screen").style.display = "none";
 });
 
 
 stoneBtn.addEventListener("click", function () {
+    myChoice.style.display = "block";
+    compChoice.style.display = "block";
     let counter = shifumi[Math.floor(Math.random() * shifumi.length)];
     removeCards();
     myChoice.appendChild(myRock);
-    if(counter == shifumi[1] || counter == shifumi[3]){
-        compScore ++
-        compCounter.innerHTML = compScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", perdu !";
-        if(counter == shifumi[1]){   
+    if (counter == shifumi[1] || counter == shifumi[3]) {
+        if (counter == shifumi[1]) {
+            roundLose()
             compChoice.appendChild(yourPaper)
-        } else if (counter == shifumi[3]) { 
+        } else if (counter == shifumi[3]) {
+            roundLose()
             compChoice.appendChild(yourSpock)
         }
-    } else if (counter == shifumi[2] || counter == shifumi[4]){
-        myScore ++;
-        myCounter.innerHTML = myScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", gagné !"
-        if (counter == shifumi[2]){
+    } else if (counter == shifumi[2] || counter == shifumi[4]) {
+        if (counter == shifumi[2]) {
+            roundWin()
             compChoice.appendChild(yourScissors);
-        }
-        else if (counter == shifumi[4]){
-            compChoice.appendChild(yourLizard);    
+        } else if (counter == shifumi[4]) {
+            roundWin()
+            compChoice.appendChild(yourLizard);
         }
     } else {
         compChoice.appendChild(yourRock);
         comment.innerHTML = "Égalité";
     }
-    result()    
+    result()
 });
 scissorsBtn.addEventListener("click", function () {
     let counter = shifumi[Math.floor(Math.random() * shifumi.length)];
     removeCards();
     myChoice.appendChild(myScissors);
-    if(counter == shifumi[0] || counter == shifumi[3]){
-        compScore ++;
-        compCounter.innerHTML = compScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", perdu !";
-        if(counter == shifumi[0]){
+    if (counter == shifumi[0] || counter == shifumi[3]) {
+        if (counter == shifumi[0]) {
+            roundLose()
             compChoice.appendChild(yourRock)
         } else if (counter == shifumi[3]) {
+            roundLose()
             compChoice.appendChild(yourSpock)
         }
-    } else if (counter == shifumi[1] || counter == shifumi[4]){
-        myScore ++;
-        myCounter.innerHTML = myScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", gagné !"
-        if (counter == shifumi[1]){
+    } else if (counter == shifumi[1] || counter == shifumi[4]) {
+        if (counter == shifumi[1]) {
+            roundWin()
             compChoice.appendChild(yourPaper);
-        }
-        else if (counter == shifumi[4]){
-            compChoice.appendChild(yourLizard);    
+        } else if (counter == shifumi[4]) {
+            roundWin()
+            compChoice.appendChild(yourLizard);
         }
     } else {
         compChoice.appendChild(yourScissors);
         comment.innerHTML = "Égalité";
     }
-    result()    
+    result()
 });
 paperBtn.addEventListener("click", function () {
     let counter = shifumi[Math.floor(Math.random() * shifumi.length)];
     removeCards();
     myChoice.appendChild(myPaper);
-    if(counter == shifumi[2] || counter == shifumi[4]){
-        compScore ++;
-        compCounter.innerHTML = compScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", perdu !";
-        if(counter == shifumi[2]){
+    if (counter == shifumi[2] || counter == shifumi[4]) {
+        if (counter == shifumi[2]) {
+            roundLose()
             compChoice.appendChild(yourScissors)
-        } else if (counter == shifumi[4]) {   
+        } else if (counter == shifumi[4]) {
+            roundLose()
             compChoice.appendChild(yourLizard)
         }
-    } else if (counter == shifumi[0] || counter == shifumi[3]){
-        myScore ++;
-        myCounter.innerHTML = myScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", gagné !"
-        if (counter == shifumi[0]){
+    } else if (counter == shifumi[0] || counter == shifumi[3]) {
+        if (counter == shifumi[0]) {
+            roundWin()
             compChoice.appendChild(yourRock);
-        }
-        else if (counter == shifumi[3]){
-            compChoice.appendChild(yourSpock);    
+        } else if (counter == shifumi[3]) {
+            roundWin()
+            compChoice.appendChild(yourSpock);
         }
     } else {
         compChoice.appendChild(yourPaper);
         comment.innerHTML = "Égalité";
     }
-    result()    
+    result()
 });
 spockBtn.addEventListener("click", function () {
     let counter = shifumi[Math.floor(Math.random() * shifumi.length)];
     removeCards();
     myChoice.appendChild(mySpock);
-    if(counter == shifumi[1] || counter == shifumi[4]){
-        compScore ++;
-        compCounter.innerHTML = compScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", perdu !";
-        if(counter == shifumi[1]){
+    if (counter == shifumi[1] || counter == shifumi[4]) {
+        if (counter == shifumi[1]) {
+            roundLose()
             compChoice.appendChild(yourPaper)
         } else if (counter == shifumi[4]) {
+            roundLose()
             compChoice.appendChild(yourLizard)
         }
-    } else if (counter == shifumi[0] || counter == shifumi[2]){
-        myScore ++;
-        myCounter.innerHTML = myScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", gagné !"
-        if (counter == shifumi[0]){
+    } else if (counter == shifumi[0] || counter == shifumi[2]) {
+        if (counter == shifumi[0]) {
+            roundWin()
             compChoice.appendChild(yourRock);
-        }
-        else if (counter == shifumi[2]){
-            compChoice.appendChild(yourScissors);    
+        } else if (counter == shifumi[2]) {
+            roundWin()
+            compChoice.appendChild(yourScissors);
         }
     } else {
         compChoice.appendChild(yourSpock);
         comment.innerHTML = "Égalité";
     }
-    result()    
+    result()
 });
 lizardBtn.addEventListener("click", function () {
     let counter = shifumi[Math.floor(Math.random() * shifumi.length)];
     removeCards();
     myChoice.appendChild(myLizard);
-    if(counter == shifumi[0] || counter == shifumi[2]){
-        compScore ++;
-        compCounter.innerHTML = compScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", perdu !";
-        if(counter == shifumi[0]){
+    if (counter == shifumi[0] || counter == shifumi[2]) {
+        if (counter == shifumi[0]) {
+            roundLose()
             compChoice.appendChild(yourRock)
         } else if (counter == shifumi[2]) {
+            roundLose()
             compChoice.appendChild(yourScissors)
         }
-    } else if (counter == shifumi[3] || counter == shifumi[1]){
-        myScore ++;
-        myCounter.innerHTML = myScore;
-        comment.innerHTML = "Votre adversaire joue " + counter + ", gagné !"
-        if (counter == shifumi[3]){
+    } else if (counter == shifumi[3] || counter == shifumi[1]) {
+        if (counter == shifumi[3]) {
+            roundWin()
             compChoice.appendChild(yourSpock);
-        }
-        else if (counter == shifumi[1]){
-            compChoice.appendChild(yourPaper);    
+        } else if (counter == shifumi[1]) {
+            roundWin()
+            compChoice.appendChild(yourPaper);
         }
     } else {
-        compChoice.appendChild(yourSpock);
+        compChoice.appendChild(yourLizard);
         comment.innerHTML = "Égalité";
     }
-    result()    
+    result()
 });
-
-function result(){
-
-    if (myScore == 3) {
-        reinit()
-        alert("Vous avez gagné ! Félicitations !");
-        myWins++
-    } else if (compScore == 3) {
-        reinit()
-        alert("Vous avez perdu. Retentez votre chance.");
-        yourWins++
-    }    
-    window.localStorage.setItem("monScore", JSON.stringify(myWins));
-    window.localStorage.setItem("tonScore", JSON.stringify(yourWins));
-    numberWins.innerHTML = JSON.parse(window.localStorage.getItem("monScore"))|| 0;
-    numberLost.innerHTML = JSON.parse(window.localStorage.getItem("tonScore"))|| 0;
-}
-
-
-
-
